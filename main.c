@@ -45,19 +45,21 @@ double approximation(struct funcValues *currP, struct kValues *k, struct mValues
     k->k4 = h*(currP->ydn + m->m3);
     m->m4 = h*function(currP->xn + h, currP->yn + k->k3, currP->ydn + m->m3);
 
-    currP->yn = currP->yn + 0.16666*(k->k1 + 2*k->k2 + 2*k->k3 + k->k4);
-    currP->ydn = currP->yn + 0.16666*(m->m1 + 2*m->m2 + 2*m->m3 + m->m4);
+    currP->yn = currP->yn + 0.166666*(k->k1 + 2*k->k2 + 2*k->k3 + k->k4);
+    currP->ydn = currP->yn + 0.166666*(m->m1 + 2*m->m2 + 2*m->m3 + m->m4);
 }
 
 void main(){
     // Initialize the variables & structs
     uint i;
-    uint n = 20;
-    double h;
+    uint n = 40;
+    double a, b, h;
     struct funcValues startValues = {1, 2, 1};
 
     // Calculate the step increment
-    h = (6 - startValues.xn)/n;
+    a = startValues.xn;
+    b = 12;
+    h = (b - a)/n;
     printf("The step increment is: %.2f\n", h);
 
     // Initialize the struct and struct pointers
