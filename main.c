@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<stdbool.h>
-
+#include<math.h>
 
 typedef struct mValues{
     double m1;
@@ -23,12 +23,19 @@ typedef struct funcValues{
 };
 
 double function(double x, double y, double yd){
-    double f;
-    f = x*yd - 6*y;
-    return f;
+    /*
+    Here you can assert the equation for y'' = f(x, y, y'), you can also use math.h functions
+    */
+   double f = x + yd - y;
+   return f;
 }
 
-void approximation(struct funcValues *currP, struct kValues *k, struct mValues *m, double h){
+double approximation(struct funcValues *currP, struct kValues *k, struct mValues *m, double h){
+    /*
+    First of all, the helper variables k1, k2, k3, k4 and m1, m2, m3, m4 are calculated. For better 
+    readability and memory management the helper variables and function values are passed in with pointers
+    to the structures. 
+    */
     k->k1 = h*currP->ydn;
     m->m1 = h*function(currP->xn, currP->yn, currP->ydn);
     k->k2 = h*(currP->ydn + m->m1/2);
