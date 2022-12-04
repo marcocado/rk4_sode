@@ -51,7 +51,7 @@ double approximation(struct funcValues *currP, struct kValues *k, struct mValues
 }
 
 void main(){
-    // Declare the variables & structs
+    // Initialize the variables & structs
     uint i;
     uint n = 20;
     double h;
