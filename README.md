@@ -1,4 +1,4 @@
-Runge–Kutta method RK4 for second order differential equations
+# Runge–Kutta method RK4 for second order differential equations
 
 Differential equations of the type:
 y'' = f(x, y, y')
