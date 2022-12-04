@@ -2,21 +2,21 @@
 #include<stdbool.h>
 #include<math.h>
 
-typedef struct mValues{
+struct mValues{
     double m1;
     double m2;
     double m3;
     double m4;
 };
 
-typedef struct kValues{
+struct kValues{
     double k1;
     double k2;
     double k3;
     double k4;
 };
 
-typedef struct funcValues{
+struct funcValues{
     double xn;
     double yn;
     double ydn;
@@ -34,7 +34,8 @@ double approximation(struct funcValues *currP, struct kValues *k, struct mValues
     /*
     First of all, the helper variables k1, k2, k3, k4 and m1, m2, m3, m4 are calculated. For better 
     readability and memory management the helper variables and function values are passed in with pointers
-    to the structures. 
+    to the structures.
+    Afterwards y and y' of the current step are calculated.
     */
     k->k1 = h*currP->ydn;
     m->m1 = h*function(currP->xn, currP->yn, currP->ydn);
@@ -50,13 +51,17 @@ double approximation(struct funcValues *currP, struct kValues *k, struct mValues
 }
 
 void main(){
+    // Declare the variables & structs
     int i;
     int n = 20;
     double h;
     struct funcValues startValues = {1, 2, 1};
-    h = (6 - startValues.xn)/n;
-    printf("Die Schrittweite ist: %.2f\n", h);
 
+    // Calculate the step increment
+    h = (6 - startValues.xn)/n;
+    printf("The step increment is: %.2f\n", h);
+
+    // Initialize the struct and struct pointers
     struct kValues k;
     struct kValues *kPointer = &k;
     struct mValues m;
@@ -64,9 +69,12 @@ void main(){
     struct funcValues f = startValues;
     struct funcValues *fPointer = &f;
 
+    // Iterate through all step increments and calculate y and y'
     for(i=0; i<n; i++){
         approximation(fPointer, kPointer, mPointer, h);
         fPointer->xn = fPointer->xn + h;
-        printf("%.2f\n", fPointer->yn);
+        printf("\nFor the current step %.2f\n", fPointer->xn);
+        printf("y:  %.3f\n", fPointer->yn);
+        printf("y': %.3f\n", fPointer->ydn);
     }
 }
