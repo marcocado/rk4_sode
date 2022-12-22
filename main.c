@@ -62,7 +62,7 @@ void printCalculation(double *xArray, double *yArray, double *ydArray, double *y
     printf("----------------------------\n\n");
 }
 
-void iterativeCalculatiion(int sizeArray, double (*xArray)[], double (*yArray)[], double (*ydArray)[], double (*yddArray)[], double h){
+void iterativeCalculation(int sizeArray, double (*xArray)[], double (*yArray)[], double (*ydArray)[], double (*yddArray)[], double h){
     int i;
     for(i=1;i<sizeArray;i++){
         RungeKutta4(*xArray, *yArray, *ydArray, *yddArray, h, i);
@@ -104,5 +104,5 @@ void main(void){
     (*ptrydArray)[0] = yd0;
     (*ptryddArray)[0] = function(a, y0, yd0);
 
-    iterativeCalculatiion(sizeArray, *ptrxArray, *ptryArray, *ptrydArray, *ptryddArray, h);
+    iterativeCalculation(sizeArray, *ptrxArray, *ptryArray, *ptrydArray, *ptryddArray, h);
 }
