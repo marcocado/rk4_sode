@@ -70,6 +70,7 @@ void main(void){
     double h;
     unsigned int sizeArray = n+1;
 
+    // Calculation of the step width
     h = (b - a)/ (double) n;
 
     // Boundaries conditions for the second order differential equation
