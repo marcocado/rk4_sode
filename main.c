@@ -70,7 +70,7 @@ void iterativeCalculation(int sizeArray, double (*xArray)[], double (*yArray)[],
     }
 }
 
-void main(void){
+int main(void){
     unsigned int i;
     double a = 0, b = 1;    // Start and end values of the range of the calculation
     unsigned int n = 2000;  // Number of calculation steps
@@ -105,4 +105,6 @@ void main(void){
     (*ptryddArray)[0] = function(a, y0, yd0);
 
     iterativeCalculation(sizeArray, *ptrxArray, *ptryArray, *ptrydArray, *ptryddArray, h);
+    
+    return EXIT_SUCCESS;
 }
