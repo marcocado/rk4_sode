@@ -76,18 +76,16 @@ void main(void){
     double y0 = 0;
     double yd0 = 4;
 
+    // Initialize arrays, pointers to arrays and assign pointers to the arrays
     double xArray[sizeArray];
     double (*ptrxArray)[sizeArray];
     ptrxArray = &xArray;
-
     double yArray[sizeArray];
     double (*ptryArray)[sizeArray];
     ptryArray = &yArray;
-
     double ydArray[sizeArray];
     double (*ptrydArray)[sizeArray];
-    ptrydArray = &ydArray;
-
+    ptrydArray = &ydArray
     double yddArray[sizeArray];
     double (*ptryddArray)[sizeArray];
     ptryddArray = &yddArray;
