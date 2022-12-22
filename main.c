@@ -86,7 +86,7 @@ void main(void){
     ptryArray = &yArray;
     double ydArray[sizeArray];
     double (*ptrydArray)[sizeArray];
-    ptrydArray = &ydArray
+    ptrydArray = &ydArray;
     double yddArray[sizeArray];
     double (*ptryddArray)[sizeArray];
     ptryddArray = &yddArray;
