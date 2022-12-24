@@ -9,7 +9,7 @@ double function(double x, double y, double yd){
     return -2*yd + 3*y + x;
 }
 
-void RungeKutta4(double (*xArray)[], double (*yArray)[], double (*ydArray)[], double (*yddArray)[], double h, int currStep){
+void stepCalculation(double (*xArray)[], double (*yArray)[], double (*ydArray)[], double (*yddArray)[], double h, int currStep){
     /*
     Calculation of the classical Runge-Kutta 4th order method for 2nd order ordinary differential equations for one step
     */
@@ -62,13 +62,13 @@ void printCalculation(double *xArray, double *yArray, double *ydArray, double *y
     printf("----------------------------\n\n");
 }
 
-void iterativeCalculation(int sizeArray, double (*xArray)[], double (*yArray)[], double (*ydArray)[], double (*yddArray)[], double h){
+void RungeKutta4(int sizeArray, double (*xArray)[], double (*yArray)[], double (*ydArray)[], double (*yddArray)[], double h){
     /*
     Iterate through all points and calculate the x, y, y' and y'' values for the step
     */
     int i;
     for(i=1;i<sizeArray;i++){
-        RungeKutta4(*xArray, *yArray, *ydArray, *yddArray, h, i);
+        stepCalculation(*xArray, *yArray, *ydArray, *yddArray, h, i);
         printCalculation(*xArray, *yArray, *ydArray, *yddArray, i);
     }
 }
@@ -108,7 +108,7 @@ int main(void){
     (*ptryddArray)[0] = function(a, y0, yd0);
 
     // Start the iterative calculatio process
-    iterativeCalculation(sizeArray, *ptrxArray, *ptryArray, *ptrydArray, *ptryddArray, h);
+    RungeKutta4(sizeArray, *ptrxArray, *ptryArray, *ptrydArray, *ptryddArray, h);
     
     return 0;
 }
