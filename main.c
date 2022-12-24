@@ -106,5 +106,5 @@ int main(void){
 
     iterativeCalculation(sizeArray, *ptrxArray, *ptryArray, *ptrydArray, *ptryddArray, h);
     
-    return EXIT_SUCCESS;
+    return 0;
 }
