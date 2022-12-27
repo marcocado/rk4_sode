@@ -17,18 +17,17 @@ void stepCalculation(double (*xArray)[], double (*yArray)[], double (*ydArray)[]
     double m1, m2, m3, m4;
     int beforeStep = currStep - 1;
 
+    // Calculation of the temporary helper variables
     k1 = h*(*ydArray)[beforeStep];
     m1 = h*function((*xArray)[beforeStep], (*yArray)[beforeStep], (*ydArray)[beforeStep]);
-
     k2 = h*((*ydArray)[beforeStep] + m1/2);
     m2 = h*function((*xArray)[beforeStep]+h/2, (*yArray)[beforeStep]+k1/2, (*ydArray)[beforeStep]+m1/2);
-
     k3 = h*((*ydArray)[beforeStep] + m2/2);
     m3 = h*function((*xArray)[beforeStep]+h/2, (*yArray)[beforeStep]+k2/2, (*ydArray)[beforeStep]+m2/2);
-
     k4 = h*((*ydArray)[beforeStep] + m3);
     m4 = h*function((*xArray)[beforeStep]+h, (*yArray)[beforeStep]+k3, (*ydArray)[beforeStep]+m3);
 
+    // Calculation and assignment of the variables with pointers
     (*xArray)[currStep] = (*xArray)[beforeStep] + h;
     (*yArray)[currStep] = (*yArray)[beforeStep] + (1.0/6.0)*(k1 + 2*k2 + 2*k3 + k4);
     (*ydArray)[currStep] = (*ydArray)[beforeStep] + (1.0/6.0)*(m1 + 2*m2 + 2*m3 + m4);
