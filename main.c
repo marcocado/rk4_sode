@@ -107,7 +107,7 @@ int main(void){
     (*ptrydArray)[0] = yd0;
     (*ptryddArray)[0] = function(a, y0, yd0);
 
-    // Start the iterative calculatio process
+    // Start the iterative calculation process
     RungeKutta4(sizeArray, *ptrxArray, *ptryArray, *ptrydArray, *ptryddArray, h);
     
     return 0;
