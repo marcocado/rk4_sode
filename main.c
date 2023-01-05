@@ -87,18 +87,41 @@ int main(void){
     double yd0 = 4;
 
     // Initialize arrays, pointers to arrays and assign pointers to the arrays
-    double xArray[sizeArray];
     double (*ptrxArray)[sizeArray];
-    ptrxArray = &xArray;
-    double yArray[sizeArray];
+    double *xArray = malloc(sizeof(double)*sizeArray);
+    if(xArray != NULL){
+        ptrxArray = xArray;
+    }
+    else{
+        printf("No Memory allocated\n");
+    }
     double (*ptryArray)[sizeArray];
-    ptryArray = &yArray;
-    double ydArray[sizeArray];
+
+    double *yArray = malloc(sizeof(double)*sizeArray);
+    if(yArray != NULL){
+        ptryArray = yArray;
+    }
+    else{
+        printf("No Memory allocated\n");
+    }
+
     double (*ptrydArray)[sizeArray];
-    ptrydArray = &ydArray;
-    double yddArray[sizeArray];
+    double *ydArray = malloc(sizeof(double)*sizeArray);
+    if(ydArray != NULL){
+        ptrydArray = ydArray;
+    }
+    else{
+        printf("No Memory allocated\n");
+    }
+
     double (*ptryddArray)[sizeArray];
-    ptryddArray = &yddArray;
+    double *yddArray = malloc(sizeof(double)*sizeArray);
+    if(yddArray != NULL){
+        ptryddArray = yddArray;
+    }
+    else{
+        printf("No Memory allocated\n");
+    }
     
     // Assign the start conditions
     (*ptrxArray)[0] = a;
