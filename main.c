@@ -89,7 +89,7 @@ int main(void){
     // Initialize arrays, pointers to arrays and assign pointers to the arrays
     double (*ptrxArray)[sizeArray] = malloc(sizeof(double*)*sizeArray);
     double *xArray = malloc(sizeof(double)*sizeArray);
-    if(xArray != NULL && ptrxArray){
+    if(xArray != NULL && ptrxArray != NULL){
         ptrxArray = xArray;
     }
     else{
@@ -107,7 +107,7 @@ int main(void){
 
     double (*ptrydArray)[sizeArray] = malloc(sizeof(double*)*sizeArray);
     double *ydArray = malloc(sizeof(double)*sizeArray);
-    if(ydArray != NULL && ptrydArray){
+    if(ydArray != NULL && ptrydArray != NULL){
         ptrydArray = ydArray;
     }
     else{
@@ -116,7 +116,7 @@ int main(void){
 
     double (*ptryddArray)[sizeArray] = malloc(sizeof(double*)*sizeArray);
     double *yddArray = malloc(sizeof(double)*sizeArray);
-    if(yddArray != NULL && ptryddArray){
+    if(yddArray != NULL && ptryddArray != NULL){
         ptryddArray = yddArray;
     }
     else{
