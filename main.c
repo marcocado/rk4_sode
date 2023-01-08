@@ -1,12 +1,14 @@
 #include<stdio.h>
+#include<stdlib.h>
 #include<math.h>
+#include<stdbool.h>
 
 
 double function(double x, double y, double yd){
     /*
     function:   y'' = f(x, y, y')
     */
-    return -2*yd + 3*y + x;
+    return -2*yd + 3*y + 2*x;
 }
 
 void stepCalculation(double (*xArray)[], double (*yArray)[], double (*ydArray)[], double (*yddArray)[], double h, int currStep){
@@ -34,29 +36,29 @@ void stepCalculation(double (*xArray)[], double (*yArray)[], double (*ydArray)[]
     (*yddArray)[currStep] = function((*xArray)[beforeStep], (*yArray)[beforeStep], (*ydArray)[beforeStep]);
 }
 
-void printCalculation(double *xArray, double *yArray, double *ydArray, double *yddArray, int currStep){
+void printCalculation(double (*xArray)[], double (*yArray)[], double (*ydArray)[], double (*yddArray)[], int currStep){
     /*
     Print the output for each calculation step
     */
     printf("----------------------------\n");
-    printf("x:      %.3f\n", xArray[currStep]);
-    if(yArray[currStep]>10000){
-        printf("y:      %.4e\n", yArray[currStep]);
+    printf("x:      %.3f\n", (*xArray)[currStep]);
+    if((*yArray)[currStep]>10000){
+        printf("y:      %.4e\n", (*yArray)[currStep]);
     }
     else{
-        printf("y:      %.3f\n", yArray[currStep]);
+        printf("y:      %.3f\n", (*yArray)[currStep]);
     }
-    if(ydArray[currStep]>10000){
-        printf("yd:     %.4e\n", ydArray[currStep]);
-    }
-    else{
-        printf("yd:     %.3f\n", ydArray[currStep]);
-    }
-    if(yddArray[currStep]>10000){
-        printf("ydd:    %.4e\n", yddArray[currStep]);
+    if((*ydArray)[currStep]>10000){
+        printf("yd:     %.4e\n", (*ydArray)[currStep]);
     }
     else{
-        printf("ydd:    %.3f\n", yddArray[currStep]);
+        printf("yd:     %.3f\n", (*ydArray)[currStep]);
+    }
+    if((*yddArray)[currStep]>10000){
+        printf("ydd:    %.4e\n", (*yddArray)[currStep]);
+    }
+    else{
+        printf("ydd:    %.3f\n", (*yddArray)[currStep]);
     }
     printf("----------------------------\n\n");
 }
@@ -75,9 +77,10 @@ void RungeKutta4(int sizeArray, double (*xArray)[], double (*yArray)[], double (
 int main(void){
     unsigned int i;
     double a = 0, b = 1;    // Start and end values of the range of the calculation
-    unsigned int n = 2000;  // Number of calculation steps
+    unsigned int n = 1000000000;  // Number of calculation steps
     double h;
     unsigned int sizeArray = n+1;
+    bool memoryAllocation = true;
 
     // Calculation of the step width
     h = (b - a)/ (double) n;
@@ -93,7 +96,7 @@ int main(void){
         ptrxArray = xArray;
     }
     else{
-        printf("No Memory allocated\n");
+        memoryAllocation = false;
     }
 
     double (*ptryArray)[sizeArray] = malloc(sizeof(double*)*sizeArray);
@@ -102,7 +105,7 @@ int main(void){
         ptryArray = yArray;
     }
     else{
-        printf("No Memory allocated\n");
+        memoryAllocation = false;
     }
 
     double (*ptrydArray)[sizeArray] = malloc(sizeof(double*)*sizeArray);
@@ -111,7 +114,7 @@ int main(void){
         ptrydArray = ydArray;
     }
     else{
-        printf("No Memory allocated\n");
+        memoryAllocation = false;
     }
 
     double (*ptryddArray)[sizeArray] = malloc(sizeof(double*)*sizeArray);
@@ -120,17 +123,22 @@ int main(void){
         ptryddArray = yddArray;
     }
     else{
-        printf("No Memory allocated\n");
+        memoryAllocation = false;
     }
-    
-    // Assign the start conditions
-    (*ptrxArray)[0] = a;
-    (*ptryArray)[0] = y0;
-    (*ptrydArray)[0] = yd0;
-    (*ptryddArray)[0] = function(a, y0, yd0);
 
-    // Start the iterative calculation process
-    RungeKutta4(sizeArray, *ptrxArray, *ptryArray, *ptrydArray, *ptryddArray, h);
-    
+    if(memoryAllocation == true){
+        // Assign the start conditions
+        (*ptrxArray)[0] = a;
+        (*ptryArray)[0] = y0;
+        (*ptrydArray)[0] = yd0;
+        (*ptryddArray)[0] = function(a, y0, yd0);
+
+        // Start the iterative calculation process
+        RungeKutta4(sizeArray, *ptrxArray, *ptryArray, *ptrydArray, *ptryddArray, h);
+    }
+    else{
+        printf("Due to lacking memory allocation, the numerical process can't be started\n");
+    }
+
     return 0;
 }
