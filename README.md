@@ -7,4 +7,4 @@ Due to the implementation with pointers to arrays, all of the variables are stor
 
 
 References:
-[1] Papula, Lothar. (2015, p. 485f). Mathematik für Ingenieure und Naturwissenschaftler - Band 2. 14th edition.
+1 Papula, Lothar. (2015, p. 485f). Mathematik für Ingenieure und Naturwissenschaftler - Band 2. 14th edition.
