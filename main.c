@@ -22,10 +22,10 @@ void stepCalculation(double (*xArray)[], double (*yArray)[], double (*ydArray)[]
     // Calculation of the temporary helper variables
     k1 = h*(*ydArray)[beforeStep];
     m1 = h*function((*xArray)[beforeStep], (*yArray)[beforeStep], (*ydArray)[beforeStep]);
-    k2 = h*((*ydArray)[beforeStep] + m1/2);
-    m2 = h*function((*xArray)[beforeStep]+h/2, (*yArray)[beforeStep]+k1/2, (*ydArray)[beforeStep]+m1/2);
+    k2 = h*((*ydArray)[beforeStep] + m1/2.0);
+    m2 = h*function((*xArray)[beforeStep]+h/2.0, (*yArray)[beforeStep]+k1/2.0, (*ydArray)[beforeStep]+m1/2.0);
     k3 = h*((*ydArray)[beforeStep] + m2/2);
-    m3 = h*function((*xArray)[beforeStep]+h/2, (*yArray)[beforeStep]+k2/2, (*ydArray)[beforeStep]+m2/2);
+    m3 = h*function((*xArray)[beforeStep]+h/2.0, (*yArray)[beforeStep]+k2/2.0, (*ydArray)[beforeStep]+m2/2.0);
     k4 = h*((*ydArray)[beforeStep] + m3);
     m4 = h*function((*xArray)[beforeStep]+h, (*yArray)[beforeStep]+k3, (*ydArray)[beforeStep]+m3);
 
