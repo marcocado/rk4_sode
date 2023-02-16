@@ -6,7 +6,7 @@ y'' = f(x, y, y')
 Due to the implementation with pointers to arrays, all of the variables are stored in arrays.
 
 Console Output:
-
+~~~text
 ------------------------------------------
 x: 0.000, y: 0.000, yd: 4.000, ydd: -8.000
 ------------------------------------------
@@ -26,7 +26,7 @@ x: 0.140, y: 0.494, yd: 3.139, ydd: -4.937
 ------------------------------------------
 x: 0.160, y: 0.556, yd: 3.053, ydd: -4.517
 ------------------------------------------
-
+~~~
 
 The code is ready to run. You can modify the function inside the first function
 
