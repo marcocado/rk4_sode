@@ -28,7 +28,7 @@ x: 0.160, y: 0.556, yd: 3.053, ydd: -4.517
 ------------------------------------------
 ~~~
 
-The code is ready to run. You can modify the function inside the first function
+The code is ready to run.
 
 References:\
 [1] Papula, Lothar. (2015, p. 485f). Mathematik für Ingenieure und Naturwissenschaftler - Band 2. 14th edition.
