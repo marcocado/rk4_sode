@@ -68,6 +68,7 @@ void RungeKutta4(int sizeArray, double (*xArray)[], double (*yArray)[], double (
     Iterate through all points and calculate the x, y, y' and y'' values for the step
     */
     int i;
+    printCalculation(*xArray, *yArray, *ydArray, *yddArray, 0);
     for(i=1;i<sizeArray;i++){
         stepCalculation(*xArray, *yArray, *ydArray, *yddArray, h, i);
         printCalculation(*xArray, *yArray, *ydArray, *yddArray, i);
