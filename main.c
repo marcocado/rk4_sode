@@ -8,7 +8,7 @@ double function(double x, double y, double yd){
     /*
     function:   y'' = f(x, y, y')
     */
-    return -2*yd + 3*y + 2*x;
+    return -2.0*yd + 3.0*y + 2.0*x;
 }
 
 void stepCalculation(double (*xArray)[], double (*yArray)[], double (*ydArray)[], double (*yddArray)[], double h, int currStep){
@@ -24,15 +24,15 @@ void stepCalculation(double (*xArray)[], double (*yArray)[], double (*ydArray)[]
     m1 = h*function((*xArray)[beforeStep], (*yArray)[beforeStep], (*ydArray)[beforeStep]);
     k2 = h*((*ydArray)[beforeStep] + m1/2.0);
     m2 = h*function((*xArray)[beforeStep]+h/2.0, (*yArray)[beforeStep]+k1/2.0, (*ydArray)[beforeStep]+m1/2.0);
-    k3 = h*((*ydArray)[beforeStep] + m2/2);
+    k3 = h*((*ydArray)[beforeStep] + m2/2.0);
     m3 = h*function((*xArray)[beforeStep]+h/2.0, (*yArray)[beforeStep]+k2/2.0, (*ydArray)[beforeStep]+m2/2.0);
     k4 = h*((*ydArray)[beforeStep] + m3);
     m4 = h*function((*xArray)[beforeStep]+h, (*yArray)[beforeStep]+k3, (*ydArray)[beforeStep]+m3);
 
     // Calculation and assignment of the variables with pointers
     (*xArray)[currStep] = (*xArray)[beforeStep] + h;
-    (*yArray)[currStep] = (*yArray)[beforeStep] + (1.0/6.0)*(k1 + 2*k2 + 2*k3 + k4);
-    (*ydArray)[currStep] = (*ydArray)[beforeStep] + (1.0/6.0)*(m1 + 2*m2 + 2*m3 + m4);
+    (*yArray)[currStep] = (*yArray)[beforeStep] + (1.0/6.0)*(k1 + 2.0*k2 + 2.0*k3 + k4);
+    (*ydArray)[currStep] = (*ydArray)[beforeStep] + (1.0/6.0)*(m1 + 2.0*m2 + 2.0*m3 + m4);
     (*yddArray)[currStep] = function((*xArray)[beforeStep], (*yArray)[beforeStep], (*ydArray)[beforeStep]);
 }
 
@@ -77,7 +77,7 @@ void RungeKutta4(int sizeArray, double (*xArray)[], double (*yArray)[], double (
 
 int main(void){
     unsigned int i;
-    double a = 0, b = 1;    // Start and end values of the range of the calculation
+    double a = 0.0, b = 1.0;    // Start and end values of the range of the calculation
     unsigned int n = 1000000000;  // Number of calculation steps
     double h;
     unsigned int sizeArray = n+1;
@@ -87,8 +87,8 @@ int main(void){
     h = (b - a)/ (double) n;
 
     // Boundaries conditions for the second order differential equation
-    double y0 = 0;
-    double yd0 = 4;
+    double y0 = 0.0;
+    double yd0 = 4.0;
 
     // Initialize arrays, pointers to arrays and assign pointers to the arrays
     double (*ptrxArray)[sizeArray] = malloc(sizeof(double*)*sizeArray);
