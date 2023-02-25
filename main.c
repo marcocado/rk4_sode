@@ -78,7 +78,7 @@ void RungeKutta4(int sizeArray, double (*xArray)[], double (*yArray)[], double (
 int main(void){
     unsigned int i;
     double a = 0.0, b = 1.0;    // Start and end values of the range of the calculation
-    unsigned int n = 1000000000;  // Number of calculation steps
+    unsigned int n = 100;  // Number of calculation steps
     double h;
     unsigned int sizeArray = n+1;
     bool memoryAllocation = true;
