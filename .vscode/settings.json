@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "test_function.h": "c",
+        "runge_kutta_4.h": "c",
+        "random": "c"
+    }
+}
